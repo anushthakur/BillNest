@@ -104,7 +104,7 @@ function DashBoard() {
                                 <li key={s.id || idx} className="list-group-item d-flex justify-content-between align-items-center">
                                     <div>
                                         <strong>{s.name}</strong>
-                                        <div className="text-muted small">User: {s.userName || (s.user ? s.user.name : '-')}</div>
+                                
                                         <div className="text-muted small">Billing: {s.billingCycle || '-'}</div>
                                     </div>
                                     <div className="text-end">

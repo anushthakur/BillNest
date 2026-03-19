@@ -1,4 +1,5 @@
 /home/labuser/Desktop/Subscription-Tracker-App/subscription-tracker-backend/src/main/java/com/assignment/subscriptiontracker/service/SubscriptionService.java
+/home/labuser/Desktop/Subscription-Tracker-App/subscription-tracker-backend/src/main/java/com/assignment/subscriptiontracker/config/OpenApiConfig.java
 /home/labuser/Desktop/Subscription-Tracker-App/subscription-tracker-backend/src/main/java/com/assignment/subscriptiontracker/controller/PaymentController.java
 /home/labuser/Desktop/Subscription-Tracker-App/subscription-tracker-backend/src/main/java/com/assignment/subscriptiontracker/entity/User.java
 /home/labuser/Desktop/Subscription-Tracker-App/subscription-tracker-backend/src/main/java/com/assignment/subscriptiontracker/entity/Subscription.java
