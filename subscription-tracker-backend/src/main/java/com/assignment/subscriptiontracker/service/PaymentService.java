@@ -48,4 +48,9 @@ public class PaymentService {
 			paymentRepository.deleteById(id);
 						
 		}
+
+	// total amount paid (sum of all payments)
+	public double getTotalPaidAmount() {
+		return paymentRepository.findAll().stream().mapToDouble(p -> p.getAmount() == null ? 0.0 : p.getAmount()).sum();
+	}
 }
