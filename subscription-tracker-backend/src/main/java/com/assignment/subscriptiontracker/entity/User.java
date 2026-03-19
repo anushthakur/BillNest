@@ -13,12 +13,15 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="users")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties({"subscriptions"})
 public class User {
 	
 	@Id
@@ -33,6 +36,7 @@ public class User {
 	
 	//One user -> many subscriptions
 	@OneToMany(mappedBy="user", cascade=CascadeType.ALL)
+	@ToString.Exclude
 	private List<Subscription> subscriptions;
 
 }

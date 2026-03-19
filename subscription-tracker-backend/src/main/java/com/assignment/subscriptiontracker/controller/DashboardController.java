@@ -3,6 +3,7 @@ package com.assignment.subscriptiontracker.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -44,6 +45,27 @@ public class DashboardController {
         dashboardData.put("upcomingRenewals", upcoming);
 
         return dashboardData;
+    }
+
+    @GetMapping("/active")
+    public List<Map<String, Object>> getActiveSubscriptions() {
+        // return a lightweight view of active subscriptions to avoid deep recursion
+        List<Subscription> all = subscriptionService.getAllSubscriptions();
+        return all.stream().filter(s -> {
+            if (s == null) return false;
+            java.time.LocalDate r = s.getRenewalDate();
+            return r == null || !r.isBefore(java.time.LocalDate.now());
+        }).map(s -> {
+            Map<String, Object> m = new HashMap<>();
+            m.put("id", s.getId());
+            m.put("name", s.getName());
+            m.put("amount", s.getAmount());
+            m.put("billingCycle", s.getBillingCycle());
+            m.put("renewalDate", s.getRenewalDate());
+            if (s.getUser() != null) m.put("userName", s.getUser().getName());
+            else m.put("userName", null);
+            return m;
+        }).collect(Collectors.toList());
     }
 
 }

@@ -13,6 +13,8 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="payments")
@@ -33,5 +35,7 @@ public class Payment {
 	//Many payments belong to one subscription
 	@ManyToOne
 	@JoinColumn(name="subscription_id")
+	@ToString.Exclude
+	@JsonIgnore
 	private Subscription subscription;
 }

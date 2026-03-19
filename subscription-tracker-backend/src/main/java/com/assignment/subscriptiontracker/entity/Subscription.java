@@ -16,6 +16,8 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name="subscriptions")
 @Data
@@ -43,10 +45,12 @@ public class Subscription {
 	//Many subscriptions belong to one user
 	@ManyToOne
 	@JoinColumn(name="user_id")
+	@ToString.Exclude
 	private User user;
 	
 	//One subscription -> many payments
 	@OneToMany(mappedBy = "subscription", cascade=CascadeType.ALL)
+	@ToString.Exclude
 	private List<Payment> payments;
 
 }

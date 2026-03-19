@@ -22,6 +22,7 @@ public class UserService {
 	//Get all users
 	public List<User> getAllUsers()
 	{
+		System.out.println("Getting all users"+ userRepository.findAll());
 		return userRepository.findAll();
 	}
 	
